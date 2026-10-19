@@ -33,6 +33,89 @@
       "offers": { "@type": "Offer", "price": "0" }
     }
     </script>
+<script id="math-guard">
+// Global Math & DOM Output Guard: prevents NaN / Infinity leaks to UI
+(function() {
+  const origToLocaleString = Number.prototype.toLocaleString;
+  Number.prototype.toLocaleString = function(locales, options) {
+    if (!Number.isFinite(this.valueOf())) return '0';
+    return origToLocaleString.call(this, locales, options);
+  };
+  const origToFixed = Number.prototype.toFixed;
+  Number.prototype.toFixed = function(digits) {
+    if (!Number.isFinite(this.valueOf())) return '0';
+    return origToFixed.call(this, digits);
+  };
+})();
+</script>
+<style id="ad-cls-shield">
+  .ad-bottom { min-height: 280px !important; }
+  .ad-bottom ins { min-height: 280px !important; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "백색, 핑크, 브라운 소음의 차이는 무엇인가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "백색소음은 전 주파수가 균일하여 주변 소음을 차단하고, 핑크소음은 고음역대가 부드러워 자연의 빗소리와 유사합니다. 브라운 소음은 중저음이 풍부하여 폭포수처럼 묵직한 안정감을 줍니다. 본 앱은 Web Audio API로 100% 무손실 실시간 합성됩니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "절전 방지(Wake Lock) 기능은 어떻게 동작하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "최신 Screen Wake Lock API를 지원하여 화면을 계속 켜두고 타이머와 잔디밭을 모니터링할 수 있습니다. 탭을 닫거나 다른 창으로 넘어가면 배터리 절약을 위해 자동 해제됩니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "기록된 집중 잔디밭 데이터가 초기화되지 않나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "브라우저 로컬스토리지에 저장되어 새로고침하거나 브라우저를 껐다 켜도 당일 달성 기록이 유지됩니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "이어폰이나 헤드폰을 착용하고 들어야 효과가 더 좋은가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네, 커널형 이어폰이나 노이즈 캔슬링 헤드폰을 착용하면 Web Audio API로 생성되는 스테레오 랜덤 주파수가 외이도를 감싸 주변의 불규칙한 생활 소음을 가장 완벽하게 차단해 줍니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "스마트폰 화면을 끄면 소리가 멈추나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "모바일 브라우저의 전력 절약 정책에 따라 화면이 꺼지면 오디오가 중단될 수 있으므로, 상단의 '절전 방지 ON' 버튼을 활성화하여 화면이 꺼지지 않도록 유지하는 것을 권장합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "이어폰이나 헤드폰을 착용하고 들어야 효과가 더 좋은가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네, 커널형 이어폰이나 노이즈 캔슬링 헤드폰을 착용하면 Web Audio API로 생성되는 스테레오 랜덤 주파수가 외이도를 감싸 주변의 불규칙한 생활 소음을 가장 완벽하게 차단해 줍니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "스마트폰 화면을 끄면 소리가 멈추나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "모바일 브라우저의 전력 절약 정책에 따라 화면이 꺼지면 오디오가 중단될 수 있으므로, 상단의 '절전 방지 ON' 버튼을 활성화하여 화면이 꺼지지 않도록 유지하는 것을 권장합니다."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans">
     <!-- Header -->
@@ -257,7 +340,14 @@
             </div>
         </section>
     
-        <!-- FAQ Section -->
+        <!-- ADSENSE START: mid -->
+<div class="ad-box ad-mid" style="max-width:1080px;margin:16px auto;padding:0 14px;text-align:center;">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="1186914926" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<!-- ADSENSE END: mid -->
+
+<!-- FAQ Section -->
         <section class="mt-16 max-w-4xl mx-auto space-y-4">
             <h2 class="text-xl font-bold text-white mb-6 text-center">자주 묻는 질문 (FAQ)</h2>
             <details class="bg-slate-900 border border-slate-800 rounded-xl p-4 cursor-pointer">
